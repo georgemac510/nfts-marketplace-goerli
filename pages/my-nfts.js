@@ -8,7 +8,7 @@ import {
   marketplaceAddress
 } from '../config'
 
-import NFTMarketplace from '../artifacts-sk/contracts/NFTMarketplace.sol/NFTMarketplace.json'
+import NFTMarketplace from '../artifacts-zk/contracts/NFTMarketplace.sol/NFTMarketplace.json'
 
 export default function MyAssets() {
   const [nfts, setNfts] = useState([])
@@ -60,7 +60,7 @@ export default function MyAssets() {
               <div key={i} className="border shadow rounded-xl overflow-hidden">
                 <img src={nft.image} className="rounded" />
                 <div className="p-4 bg-black">
-                  <p className="text-2xl font-bold text-white">Price - {nft.price} MATIC</p>
+                  <p className="text-2xl font-bold text-white">Price - {nft.price} ETH</p>
                   <button className="mt-4 w-full bg-blue-500 text-white font-bold py-2 px-12 rounded" onClick={() => listNFT(nft)}>List</button>
                 </div>
               </div>

@@ -7,7 +7,7 @@ import {
   marketplaceAddress
 } from '../config'
 
-import NFTMarketplace from '../artifacts-sk/contracts/NFTMarketplace.sol/NFTMarketplace.json'
+import NFTMarketplace from '../artifacts-zk/contracts/NFTMarketplace.sol/NFTMarketplace.json'
 
 export default function CreatorDashboard() {
   const [nfts, setNfts] = useState([])
@@ -55,7 +55,7 @@ export default function CreatorDashboard() {
               <div key={i} className="border shadow rounded-xl overflow-hidden">
                 <img src={nft.image} className="rounded" />
                 <div className="p-4 bg-black">
-                  <p className="text-2xl font-bold text-white">Price - {nft.price} MATIC</p>
+                  <p className="text-2xl font-bold text-white">Price - {nft.price} ETH</p>
                 </div>
               </div>
             ))

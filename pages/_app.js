@@ -1,6 +1,8 @@
 /* pages/_app.js */
 import '../styles/globals.css'
 import Link from 'next/link'
+import {} from "zksync-web3";
+import {} from "ethers";
 import { MoralisProvider } from "react-moralis"
 import Header from '../components/Header'
 

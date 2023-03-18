@@ -1,4 +1,6 @@
-import { ethers } from 'ethers'
+import * as zksync from "zksync-web3";
+import * as ethers from "ethers";
+// import { zkSyncProvider } from "zksync-web3";
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from 'web3modal'
@@ -7,7 +9,7 @@ import {
   marketplaceAddress
 } from '../config'
 
-import NFTMarketplace from '../artifacts-sk/contracts/NFTMarketplace.sol/NFTMarketplace.json'
+import NFTMarketplace from '../artifacts-zk/contracts/NFTMarketplace.sol/NFTMarketplace.json'
 
 export default function Home() {
   const [nfts, setNfts] = useState([])
@@ -17,9 +19,12 @@ export default function Home() {
   }, [])
   async function loadNFTs() {
     /* create a generic provider and query for unsold market items */
+    const zkSyncProvider = new zksync.Provider("https://zksync2-testnet.zksync.dev");
+    // const ethProvider = ethers.getDefaultProvider("goerli");
+    // const provider = new Provider("https://zksync2-testnet.zksync.dev");
     const provider = new ethers.providers.JsonRpcProvider(process.env.NEXT_PUBLIC_INFURA_ID)
-    const contract = new ethers.Contract(marketplaceAddress, NFTMarketplace.abi, provider)
-    const data = await contract.fetchMarketItems()
+    const contract = new ethers.Contract(marketplaceAddress, NFTMarketplace.abi, provider);
+    const data = await contract.fetchMarketItems();
 
     /*
     *  map over items returned from smart contract and format 
@@ -75,7 +80,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="p-4 bg-black">
-                  <p className="text-2xl font-bold text-white">{nft.price} MATIC</p>
+                  <p className="text-2xl font-bold text-white">{nft.price} ETH</p>
                   <button className="mt-4 w-full bg-blue-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
                 </div>
               </div>
